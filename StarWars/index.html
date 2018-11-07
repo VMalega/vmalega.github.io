@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Star Wars Heroes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <main>
+    <h1>Star Wars Heroes</h1>
+    <div class="heroData">
+      <div class="upd-cover" id="updCover" style="display:none">
+        <div class="wait-icon" id="waitIcon">
+          <img src="img/wait background.png" class="wait-icon" id="waitBackground">
+          <img src="img/wait process.png" class="wait-icon" id="waitProcess">
+        </div>
+        <div class="unable-message" id="unableMsg" style="display:none" >
+          <img src="img/unhappy.png" width="60" height="60">
+          <p id="errMsg" style="color:#c59a27; font-family: sans-serif">Unable to get data from swapi.co</p>
+        </div>
+
+
+      </div>
+      <div class="first-column">
+        <img id="mainImg" class="hero-image" width="180" height="240" alt="Person's Photo">
+        <div class="buttons-wrapper">
+          <button type="button" class="prev-button" id="prevButton">Prev</button>
+          <button type="button" class="next-button" id="nextButton">Next</button>
+        </div>
+      </div>
+      <div class="second-column">
+        <ul class="biodata-list" id="bioDataList">Biometrics</ul>
+      </div>
+      <div class="third-column">
+        <ul class="films-list" id="filmsList">Films</ul>
+      </div>
+    </div>
+    <p id="indexInfo" style="color:#c59a27; font-family: sans-serif; font-size: 12px;" >index</p>
+    <input type="number" id="indexInput" placeholder="input hero index here" style="background-color: black; border-width:2px; height: 24px; border-color: #c59a27;  color: #c59a27;">
+    <button type="button" id="showByIndexButton" style="height:30px">Show</button>
+  </main>
+  <script src="src\jquery-3.3.1.min.js"></script>
+  <script src="src\2dScript.js"></script>
+</body>
+
+</html>
