@@ -165,8 +165,10 @@ function errCatcher(err) {
     case 1:
     htmlElements.waitIcon.style='display: none';
 
+    if (currPerson.previousGoodIndex===0) {
+      htmlElements.errMsg.innerHTML='Unable to get heroes quantity from swapi.co';
+    } else {
       htmlElements.errMsg.innerHTML='Unable to get data from swapi.co by index '+currPerson.index+'<br>I\'m going back to previous Hero' ;
-      unableMsg.style = 'display:block';
       setTimeout(function() {
         unableMsg.style = 'display:none';
         htmlElements.waitIcon.style='display: block';
@@ -175,7 +177,20 @@ function errCatcher(err) {
         currPerson.index=currPerson.previousGoodIndex;
         getData(currPerson.urlSwapi(), fillNewHero, errCatcher);
       }, 3000);
+    }
+    unableMsg.style = 'display:block';
+
+
+
+
+
       break;
+      case 2:
+        htmlElements.waitIcon.style='display: none';
+        htmlElements.errMsg.innerHTML='Somthing goes wrong. Try to refresh the page.';
+        unableMsg.style = 'display:block';
+        htmlElements.showByIndexButton.disabled=true;
+        break;
     default:
 
   }
@@ -191,8 +206,12 @@ function getData(url, callback, errCallback) {
       currPerson.getCounter--;
       callback(JSON.parse(res));
     } else {
-      if (request.readyState === 4 && request.status != 200) {
+      if (request.readyState === 4 && request.status === 404) {
         errCallback(1);
+      }else {
+        if (request.readyState === 4) {
+          errCallback(2);
+        }
       }
     }
   };
@@ -236,4 +255,6 @@ htmlElements.showByIndexButton.onclick=function(){
   }
 }
 
-getData(currPerson.urlSwapiPart, addCountToAllPersons,function(){});
+window.onload = ()=>{
+  getData(currPerson.urlSwapiPart, addCountToAllPersons,errCatcher);
+}
