@@ -35,23 +35,20 @@
   }
 }
 
-.animate-moving-top{
-  animation-duration: 0.3s;
-  animation-name: move-top;
-  animation-iteration-count: 1;
-}
-.animate-moving-right{
-  animation-duration: 0.3s;
-  animation-name: move-right;
-  animation-iteration-count: 1;
-}
-.animate-moving-bottom{
-  animation-duration: 0.3s;
-  animation-name: move-bottom;
-  animation-iteration-count: 1;
-}
-.animate-moving-left{
-  animation-duration: 0.3s;
-  animation-name: move-left;
-  animation-iteration-count: 1;
+@keyframes shake {
+  0% {
+    transform: translateX(4px);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
